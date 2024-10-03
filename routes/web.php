@@ -23,7 +23,8 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UserProfileController;
 use App\Http\Controllers\ResetPassword;
-use App\Http\Controllers\ChangePassword;            
+use App\Http\Controllers\ChangePassword;           
+use App\Http\Controllers\AnimalController;    
             
 
 Route::get('/', function () {return redirect('/dashboard');})->middleware('auth');
@@ -36,9 +37,7 @@ Route::get('/', function () {return redirect('/dashboard');})->middleware('auth'
 	Route::get('/change-password', [ChangePassword::class, 'show'])->middleware('guest')->name('change-password');
 	Route::post('/change-password', [ChangePassword::class, 'update'])->middleware('guest')->name('change.perform');
 	Route::get('/dashboard', [HomeController::class, 'index'])->name('home')->middleware('auth');
-	Route::get('/animal', [AnimalController::class, 'index'])->name('animais');
-	Route::get('/responsavel', [ResponsavelController::class, 'index'])->name('responsavel');
-	Route::get('/medicamento', [MedicamentoController::class, 'index'])->name('medicamento');
+	Route::get('/animal', [AnimalController::class, 'index'])->name('animal');
 Route::group(['middleware' => 'auth'], function () {
 	Route::get('/virtual-reality', [PageController::class, 'vr'])->name('virtual-reality');
 	Route::get('/rtl', [PageController::class, 'rtl'])->name('rtl');
